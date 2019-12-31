@@ -69,14 +69,19 @@ logo_tux(){
 }
 
 hny(){
-	LINE_DRAW=$(($LINE - 15))
+	COLOR=$(shuf -n 1 -i 1-7)
+    LINE_DRAW=$(($LINE - 15))
 	HNY_COL=$(( ($COLS - 30)/2 ))
+
+    tput setaf $COLOR
 
 	locate $LINE_DRAW $HNY_COL "╔╦╗════════╔═╗═════╔╦╗══════"; add_ld
 	locate $LINE_DRAW $HNY_COL "║╩╠═╦═╦═╦╦╗║║╠═╦╦╦╗║║╠═╦═╦╦╗"; add_ld
 	locate $LINE_DRAW $HNY_COL "║╦║╬║╬║╬║║║║║║╩╣║║║╠╗║╩╣╬║╔╝"; add_ld
 	locate $LINE_DRAW $HNY_COL "╚╩╩╩╣╔╣╔╬╗║╚╩╩═╩══╝╚═╩═╩╩╩╝═"; add_ld
 	locate $LINE_DRAW $HNY_COL "════╚╝╚╝╚═╝═════════════════"
+
+    tput setaf 7
 }
 
 locate(){ 
@@ -305,9 +310,9 @@ snow(){
 tput clear; tput civis # disable cursor
 
 logo_tux
-hny
 
 while true; do
+    hny
     snow
     sleep 0.5
 
